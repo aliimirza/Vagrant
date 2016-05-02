@@ -1,7 +1,7 @@
 # Vagrant provisioning script for LAMP installation on CentOS
 
 # Install OS updates, exclude kernel updates
-yum update -y --exclude=kerner
+yum update -y --exclude=kernel
 
 # Install Apache
 yum install httpd httpd-devel httpd-tools -y
@@ -14,7 +14,7 @@ chkconfig httpd on
 service httpd stop
 rm -rf /var/www/html
 
-# Creating soft link of /var/www/html to /vagrant
+# Creating soft link to /var/www/html of /vagrant
 ln -s /vagrant /var/www/html
 
 # Adding index.html and phpinfo.php files from GitHub
