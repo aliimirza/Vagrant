@@ -17,6 +17,11 @@ rm -rf /var/www/html
 # Creating soft link of /var/www/html to /vagrant
 ln -s /vagrant /var/www/html
 
+# Adding index.html and phpinfo.php files from GitHub
+cd /vagrant
+sudo -u vagrant wget https://raw.githubusercontent.com/aliimirza/Vagrant/master/files/index.html
+sudo -u vagrant wget https://raw.githubusercontent.com/aliimirza/Vagrant/master/files/phpinfo.php
+
 # opening port 80 to public
 iptables -I INPUT 1 -p tcp --dport 80 -j ACCEPT
 /etc/init.d/iptables save
