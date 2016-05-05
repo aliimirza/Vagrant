@@ -1,7 +1,12 @@
+#!/bin/bash
+
 # Vagrant provisioning script for LAMP installation on CentOS
 
 # Install OS updates, exclude kernel updates
 yum update -y --exclude=kernel
+
+# Install commonly used packaged
+yum install git screen nc telnet -y
 
 # Install Apache
 yum install httpd httpd-devel httpd-tools -y
@@ -10,7 +15,7 @@ yum install httpd httpd-devel httpd-tools -y
 chkconfig --add httpd
 chkconfig httpd on
 
-# Removing 
+# Removing html folder from DocumentRoot to recreate as symlink to /vagrant shared folder
 service httpd stop
 rm -rf /var/www/html
 
